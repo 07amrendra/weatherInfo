@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Weather App</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+
+	<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+	<form action="/weather" method="get">
+		<input type="text" name="city" placeholder="Enter city name">
+		<button type="submit">Get Weather</button>
+	</form>
+	<br>
+	<div th:if="${weather}">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Weather in <span th:text="${weather.city}"></span></h5>
+					<h6 class="card-subtitle mb-2 text-muted">Description: <span
+							th:text="${weather.description}"></span></h6>
+					<p class="card-text">Temperature: <span th:text="${weather.temperature} + '°C'"></span></p>
+					<p class="card-text">Feels Like: <span th:text="${weather.feelsLike} + '°C'"></span></p>
+					<p class="card-text">Humidity: <span th:text="${weather.humidity} + '%'"></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
